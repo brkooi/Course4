@@ -1,6 +1,6 @@
 # Data science Course 4 - Exploratory Data Analysis
 # Final assignment
-# Script Plot1.R
+# Script Plot2.R
 
 
 #load packages
@@ -17,15 +17,15 @@ unzip(zipfile = "dataFiles.zip")
 NEI <- readRDS("summarySCC_PM25.rds")
 #SCC <- readRDS("Source_Classification_Code.rds")
 
-# summarize emission per year
-plot1<-NEI%>%select(year,Emissions)%>%group_by(year)%>%summarize(total_emm=sum(Emissions))
+# summarize emission per year for Baltimore (fips==24510)
+plot2<-NEI%>%filter(fips=="24510")%>%select(year,Emissions)%>%group_by(year)%>%summarize(total_emm=sum(Emissions))
 
 #initialize device
-png(filename = "Plot1.png",
+png(filename = "Plot2.png",
     width = 480, height = 480, units = "px", pointsize = 12)
 
 #make plot with base plotting-system
-plot(plot1$year,log(plot1$total_emm),pch=19,cex=3,xlab="Year",ylab="Total Emission",main = "Total Emission per year")
+plot(plot2$year,log(plot2$total_emm),pch=19,cex=3,xlab="Year",ylab="Total Emission",main = "Total Emission per year for Baltimore")
 
 #close device
 dev.off()
