@@ -25,7 +25,7 @@ png(filename = "Plot1.png",
     width = 480, height = 480, units = "px", pointsize = 12)
 
 #make plot with base plotting-system
-plot(plot1$year,log(plot1$total_emm),pch=19,cex=3,xlab="Year",ylab="Total Emission",main = "Total Emission per year")
+plot(plot1$year,plot1$total_emm,pch=19,cex=3,xlab="Year",ylab="Total Emission",main = "Total Emission per year")
 
 #close device
 dev.off()
